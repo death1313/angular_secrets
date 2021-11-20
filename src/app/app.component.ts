@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-secrets';
+
+
+  constructor(private _http: HttpClient) {
+    this._http.get('http://localhost:3000/users')
+      .subscribe(() => {
+
+      });
+  }
 }
