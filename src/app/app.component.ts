@@ -8,11 +8,12 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AppComponent {
 
+  data : any;
 
   constructor(private _http: HttpClient) {
-    this._http.get('http://localhost:3000/users')
-      .subscribe(() => {
-
+    this._http.get('http://localhost:3000/report')
+      .subscribe((res) => {
+         this.data = res;
       });
   }
 }

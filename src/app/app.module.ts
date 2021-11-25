@@ -5,6 +5,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {TokenInterceptor} from "../interceptors/token-interceptor";
+import {ResponseFormatInterceptor} from "../interceptors/response-format.interceptor";
+
 
 @NgModule({
   declarations: [
@@ -19,6 +21,11 @@ import {TokenInterceptor} from "../interceptors/token-interceptor";
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ResponseFormatInterceptor,
       multi: true
     }
   ],
