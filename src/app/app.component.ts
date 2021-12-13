@@ -11,7 +11,7 @@ export class AppComponent {
   data : any;
 
   constructor(private _http: HttpClient) {
-    this._http.get('http://localhost:3000/report')
+    this._http.get('http://localhost:3000/reports')
       .subscribe((res) => {
          this.data = res;
       });
