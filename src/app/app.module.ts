@@ -4,14 +4,14 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {TokenInterceptor} from "../interceptors/token-interceptor";
-import {ResponseFormatInterceptor} from "../interceptors/response-format.interceptor";
-import {CustomHttpInterceptor} from "../interceptors/custom-http.interceptor";
+import {CustomHttpInterceptor} from "./interceptors/custom-http.interceptor";
+import {PagesComponent} from "./pages/pages.component";
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PagesComponent
   ],
   imports: [
     BrowserModule,

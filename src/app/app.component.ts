@@ -1,19 +1,16 @@
 import {Component} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template:
+    `
+      <h1>App</h1>
+      <router-outlet></router-outlet>
+    `
+  ,
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
 
-  data : any;
-
-  constructor(private _http: HttpClient) {
-    this._http.get('http://localhost:3000/reports')
-      .subscribe((res) => {
-         this.data = res;
-      });
-  }
 }
