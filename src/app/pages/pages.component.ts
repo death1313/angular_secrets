@@ -6,10 +6,11 @@ import {Meta} from "../models/meta";
 @Component({
   selector: 'app-pages',
   template: `
-    <ng-container *ngIf="meta">
-      <h3>Pages</h3>
-      {{meta | json}}
-    </ng-container>
+    <!--    <ng-container *ngIf="meta">-->
+    <!--      <h3>Pages</h3>-->
+    <!--      {{meta | json}}-->
+    <!--    </ng-container>-->
+    <header> APP HEADER</header>
     <router-outlet></router-outlet>
   `
 })

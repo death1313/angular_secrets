@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {PagesComponent} from "./pages/pages.component";
 import {MetaResolverService} from "./resolvers/meta-resolver.service";
 
+
 const routes: Routes = [
   // after login
   {
@@ -11,7 +12,11 @@ const routes: Routes = [
     resolve: {
       meta: MetaResolverService
     },
-    children: [],
+    children: [
+      {path: 'about', loadChildren: () => import('./pages/about/about.module').then(m => m.AboutModule)},
+      {path: 'contact', loadChildren: () => import('./pages/contact/contact.module').then(m => m.ContactModule)},
+      {path: 'faq', loadChildren: () => import('./pages/faq/faq.module').then(m => m.FaqModule)},
+    ],
   }
 
 
