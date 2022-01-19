@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {ActivatedRoute, RouteConfigLoadEnd, RouteConfigLoadStart, Router} from "@angular/router";
+import {ActivatedRoute, RouteConfigLoadEnd, RouteConfigLoadStart, Router, RouterEvent} from "@angular/router";
 import {Meta} from "../models/meta";
 
 
@@ -40,12 +40,15 @@ export class PagesComponent {
 
 
     _route.events.subscribe((e) => {
-
-      if (e instanceof RouteConfigLoadStart) {
-        this.loading = true;
-      } else if (e instanceof RouteConfigLoadEnd) {
-        this.loading = false;
-      }
+      this.checkRoute(e);
     })
+  }
+
+  private checkRoute(e: any) {
+    if (e instanceof RouteConfigLoadStart) {
+      this.loading = true;
+    } else if (e instanceof RouteConfigLoadEnd) {
+      this.loading = false;
+    }
   }
 }
