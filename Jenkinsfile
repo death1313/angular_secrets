@@ -37,32 +37,4 @@ pipeline {
     }
 
 
-    stage('Deploy') {
-      agent any
-      steps {
-        dir(env.BUILD_OUTPUT_PATH) {
-          cifsPublisher(publishers: [[
-            configName: env.PUBLISH_CONFIG_NAME,
-            transfers:[[
-              cleanRemote: true,
-              excludes: '',
-              flatten: false,
-              makeEmptyDirs: true,
-              noDefaultExcludes: false,
-              patternSeparator: '/',
-              remoteDirectory: env.DEPLOY_FOLDER,
-              remoteDirectorySDF: false,
-              removePrefix: '',
-              sourceFiles: '**/*'
-            ]],
-            usePromotionTimestamp: false,
-            useWorkspaceInPromotion: false,
-            verbose: false]]
-          )
-        }
-        cleanWs cleanWhenAborted: false, cleanWhenFailure: false, cleanWhenNotBuilt: false, cleanWhenUnstable: false, notFailBuild: true
-      }
-    }
-  }
-
 }
