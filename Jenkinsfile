@@ -31,7 +31,7 @@ pipeline {
     stage('Build') {
       agent any
       steps {
-        bat 'npm run ng-test'
+        bat 'npm run test'
       }
     }
 
