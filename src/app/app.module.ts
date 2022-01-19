@@ -6,6 +6,7 @@ import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {CustomHttpInterceptor} from "./interceptors/custom-http.interceptor";
 import {PagesComponent} from "./pages/pages.component";
+import {CustomPreloadStrategy} from "./services/custom-preload-strategy";
 
 
 
@@ -34,7 +35,8 @@ import {PagesComponent} from "./pages/pages.component";
       provide: HTTP_INTERCEPTORS,
       useClass: CustomHttpInterceptor,
       multi: true
-    }
+    },
+    CustomPreloadStrategy
 
   ],
   bootstrap: [AppComponent]

@@ -1,7 +1,8 @@
 import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {PagesComponent} from "./pages/pages.component";
 import {MetaResolverService} from "./resolvers/meta-resolver.service";
+import {CustomPreloadStrategy} from "./services/custom-preload-strategy";
 
 
 const routes: Routes = [
@@ -13,21 +14,27 @@ const routes: Routes = [
       meta: MetaResolverService
     },
     children: [
-      {path: 'about', loadChildren: () => import('./pages/about/about.module').then(m => m.AboutModule)},
-      {path: 'contact', loadChildren: () => import('./pages/contact/contact.module').then(m => m.ContactModule)},
-      {path: 'faq', loadChildren: () => import('./pages/faq/faq.module').then(m => m.FaqModule)},
+      {
+        path: 'about',
+        loadChildren: () => import('./pages/about/about.module').then(m => m.AboutModule),
+      },
+      {
+        path: 'contact',
+        loadChildren: () => import('./pages/contact/contact.module').then(m => m.ContactModule)
+      },
+      {
+        path: 'faq',
+        loadChildren: () => import('./pages/faq/faq.module').then(m => m.FaqModule),
+        data: {preload: true}
+      },
     ],
   }
-
-
-  // before
-  // login
-  // reset password
-  // forget password
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy: CustomPreloadStrategy
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {
