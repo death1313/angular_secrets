@@ -31,7 +31,7 @@ pipeline {
     stage('Build') {
       agent any
       steps {
-        bat 'npm run test-nw'
+        bat 'npm build'
       }
     }
 
